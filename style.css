@@ -5,7 +5,7 @@
 }
 
 body {
-  background: teal;
+  background: purple;
 }
 
 .container {
@@ -20,6 +20,7 @@ body {
 }
 
 .container h1 {
+  color: rgb(245, 245, 245);
   font-size: 2rem;
   font-weight: bold;
   text-decoration: underline;
@@ -28,10 +29,10 @@ body {
 .question-container {
   min-width: 50vw;
   width: fit-content;
-  background: black;
-  border: 1px solid white;
+  background: rgb(10, 10, 10);
+  border: 2px solid rgb(245, 245, 245);
   border-radius: 5px;
-  color: white;
+  color: rgb(245, 245, 245);
   font-size: 1rem;
   font-weight: bold;
   padding: 10px;
@@ -54,16 +55,44 @@ body {
 .radio-container {
   min-width: 50vw;
   width: fit-content;
-  background: white;
-  border: 1px solid black;
+  background: rgb(245, 245, 245);
+  border: 2px solid rgb(10, 10, 10);
   border-radius: 5px;
   font-size: 1rem;
   font-weight: bold;
   padding: 10px;
+  position: relative;
 }
 
 .radio-container:hover {
   cursor: pointer;
+}
+
+.radio-container label {
+  padding-left: 5px;
+}
+
+.radio-container i {
+  position: absolute;
+  top: 30%;
+  right: 10px;
+  display: none;
+}
+
+.correct {
+  border: 2px solid green;
+}
+
+.wrong {
+  border: 2px solid red;
+}
+
+.fa-check {
+  color: green;
+}
+
+.fa-times {
+  color: red;
 }
 
 .btn-container {
@@ -77,14 +106,14 @@ body {
 button {
   padding: 10px;
   background: gold;
-  border: 1px solid black;
+  border: 2px solid rgb(10, 10, 10);
   border-radius: 5px;
   font-size: 1rem;
   font-weight: bold;
 }
 
 button:hover {
-  background: black;
+  background: rgb(10, 10, 10);
   color: gold;
   cursor: pointer;
 }
