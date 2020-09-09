@@ -5,7 +5,7 @@
 }
 
 body {
-  background: purple;
+  background: grey;
 }
 
 .container {
@@ -19,11 +19,50 @@ body {
   font-family: sans-serif;
 }
 
-.container h1 {
-  color: rgb(245, 245, 245);
+.header {
+  min-width: 90vw;
+  width: fit-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header #forfeit {
+  background: lightcoral;
+}
+
+.header #forfeit:hover {
+  background: black;
+  color: lightcoral;
+}
+
+.header h1 {
   font-size: 2rem;
   font-weight: bold;
   text-decoration: underline;
+}
+
+.header #submit {
+  background: lightgreen;
+}
+
+.header #submit:hover {
+  background: black;
+  color: lightgreen;
+}
+
+.score-container {
+  background: teal;
+  color: rgb(245, 245, 245);
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px 10px;
+  font-weight: bold;
+}
+
+.score-container #score {
+  color: rgb(245, 245, 245);
+  font-weight: bold;
 }
 
 .question-container {
@@ -45,7 +84,7 @@ body {
 
 .options-container {
   height: fit-content;
-  min-height: 35vh;
+  min-height: 40vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -95,6 +134,11 @@ body {
   color: red;
 }
 
+.wrong .fa-times,
+.correct .fa-check {
+  display: inline-block;
+}
+
 .btn-container {
   min-width: 50vw;
   width: fit-content;
@@ -106,7 +150,7 @@ body {
 button {
   padding: 10px;
   background: gold;
-  border: 2px solid rgb(10, 10, 10);
+  border: 1px solid rgb(10, 10, 10);
   border-radius: 5px;
   font-size: 1rem;
   font-weight: bold;
