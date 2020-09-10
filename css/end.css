@@ -5,67 +5,38 @@
 }
 
 body {
+  min-height: 60vh;
+  height: fit-content;
   background-image: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
   background-repeat: none;
   background-position: center;
   background-size: cover;
   background-attachment: fixed;
-}
-
-.container {
-  height: 100vh;
-  width: 100vw;
   display: flex;
+  flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  flex-direction: column;
-  margin: auto;
   font-family: sans-serif;
 }
 
-.header {
-  height: fit-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.header h1 {
+span {
+  color: red;
   font-weight: bolder;
-  font-style: italic;
   text-decoration: underline;
-}
-
-.rules {
-  min-height: 40vh;
-  height: fit-content;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-}
-
-.rules h2 {
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-.rules p {
-  font-size: 18px;
 }
 
 button {
   font-size: 16px;
   font-weight: bold;
   padding: 10px;
-  background: teal;
+  background: wheat;
+  outline: none;
   border: 1px solid black;
   border-radius: 5px;
-  outline: none;
-  cursor: pointer;
 }
 
 button:hover {
   background: black;
-  color: teal;
+  color: wheat;
+  cursor: pointer;
 }

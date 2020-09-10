@@ -2,18 +2,23 @@ window.addEventListener("load", () => {
   const ques = document.getElementById("question");
   const opc = document.getElementsByClassName("options-container");
   let qno = 0;
+  let ar = new Array(10);
+  for (let i = 0; i < 10; i++) {
+    ar[i] = new Array(3);
+  }
 
-  const url = "https://opentdb.com/api.php?amount=10";
+  const url = "https://opentdb.com/api.php?amount=10&encode=url3986";
   fetch(url)
     .then((response) => {
       return response.json();
     })
     .then((data) => {
       function doIt() {
-        let q = data.results[qno].question;
-        q = q.replaceAll("&quot;", '"').replaceAll("&#039;", "'");
+        let q = decodeURIComponent(data.results[qno].question);
         ques.innerText = q;
-        let a = data.results[qno].correct_answer;
+        let a = decodeURIComponent(data.results[qno].correct_answer);
+        ar[qno][0] = q;
+        ar[qno][1] = a;
         let b = data.results[qno].incorrect_answers;
         let arr = new Array(b.length + 1);
         let rn = Math.floor(Math.random() * (b.length + 1));
@@ -21,6 +26,7 @@ window.addEventListener("load", () => {
         let c = 0;
         for (let i = 0; i < b.length + 1; i++) {
           if (i != rn) {
+            b[c] = decodeURIComponent(b[c]);
             arr[i] = b[c++];
           }
         }
@@ -58,6 +64,10 @@ window.addEventListener("load", () => {
         for (let i = 0; i < radioSelect.length; i++) {
           radioSelect[i].addEventListener("click", () => {
             radioSelect[i].querySelector("input").checked = true;
+            ar[qno][2] = radioSelect[i].querySelector("label").innerText;
+            for (let j = 0; j < radioSelect.length; j++) {
+              radioSelect[j].style.pointerEvents = "none";
+            }
           });
         }
 
@@ -78,11 +88,46 @@ window.addEventListener("load", () => {
         }
       }
 
+      function checkIt() {
+        const radioSelect = document.getElementsByClassName("radio-container");
+        if (typeof ar[qno][2] !== "undefined") {
+          for (let i = 0; i < radioSelect.length; i++) {
+            radioSelect[i].style.pointerEvents = "none";
+          }
+
+          if (ar[qno][1] === ar[qno][2]) {
+            for (let i = 0; i < radioSelect.length; i++) {
+              if (
+                radioSelect[i].querySelector("label").innerText === ar[qno][2]
+              ) {
+                radioSelect[i].classList.add("correct");
+                radioSelect[i].querySelector("input").checked = true;
+              }
+            }
+          } else {
+            for (let i = 0; i < radioSelect.length; i++) {
+              if (
+                radioSelect[i].querySelector("label").innerText === ar[qno][1]
+              ) {
+                radioSelect[i].classList.add("correct");
+              }
+              if (
+                radioSelect[i].querySelector("label").innerText === ar[qno][2]
+              ) {
+                radioSelect[i].classList.add("wrong");
+                radioSelect[i].querySelector("input").checked = true;
+              }
+            }
+          }
+        }
+      }
+
       document.getElementById("previous").addEventListener("click", () => {
         if (qno > 0) {
           qno--;
           opc[0].innerText = "";
           doIt();
+          checkIt();
         }
       });
 
@@ -91,9 +136,13 @@ window.addEventListener("load", () => {
           qno++;
           opc[0].innerText = "";
           doIt();
+          checkIt();
         }
       });
 
       doIt();
     });
+  document.getElementById("submit").addEventListener("click", () => {
+    sessionStorage.setItem("score", document.getElementById("score").innerText);
+  });
 });
