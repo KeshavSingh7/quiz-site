@@ -14,6 +14,7 @@ window.addEventListener("load", () => {
     })
     .then((data) => {
       function doIt() {
+        document.getElementById("qno").innerText = parseInt(qno) + 1;
         let q = decodeURIComponent(data.results[qno].question);
         ques.innerText = q;
         let a = decodeURIComponent(data.results[qno].correct_answer);
@@ -129,6 +130,14 @@ window.addEventListener("load", () => {
           doIt();
           checkIt();
         }
+
+        if (qno == 0) {
+          document.getElementById("realForfeit").style.display = "none";
+          document.getElementById("myModal").style.display = "inline-block";
+          document.getElementById("realSubmit").style.display = "none";
+          document.getElementById("prevText").style.display = "inline-block";
+          document.getElementById("nextText").style.display = "none";
+        }
       });
 
       document.getElementById("next").addEventListener("click", () => {
@@ -138,11 +147,41 @@ window.addEventListener("load", () => {
           doIt();
           checkIt();
         }
+
+        if (qno == 9) {
+          document.getElementById("realForfeit").style.display = "none";
+          document.getElementById("myModal").style.display = "inline-block";
+          document.getElementById("realSubmit").style.display = "none";
+          document.getElementById("prevText").style.display = "none";
+          document.getElementById("nextText").style.display = "inline-block";
+        }
       });
 
       doIt();
     });
   document.getElementById("submit").addEventListener("click", () => {
     sessionStorage.setItem("score", document.getElementById("score").innerText);
+    document.getElementById("realForfeit").style.display = "none";
+    document.getElementById("myModal").style.display = "inline-block";
+    document.getElementById("realSubmit").style.display = "inline-block";
+    document.getElementById("prevText").style.display = "none";
+    document.getElementById("nextText").style.display = "none";
+    document.getElementById("modal-content").style.pointerEvents = "none";
+  });
+
+  document.getElementById("forfeit").addEventListener("click", () => {
+    document.getElementById("realForfeit").style.display = "inline-block";
+    document.getElementById("myModal").style.display = "inline-block";
+    document.getElementById("realSubmit").style.display = "none";
+    document.getElementById("prevText").style.display = "none";
+    document.getElementById("nextText").style.display = "none";
+    document.getElementById("modal-content").style.pointerEvents = "none";
+  });
+
+  document.getElementById("close").addEventListener("click", () => {
+    document.getElementById("myModal").style.display = "none";
+  });
+  document.getElementById("Mymodal").addEventListener("click", () => {
+    document.getElementById("myModal").style.display = "none";
   });
 });

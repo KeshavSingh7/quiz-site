@@ -172,6 +172,55 @@ button:active {
   outline: none;
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  min-width: 100vw;
+  min-height: 100vh;
+  background: rgb(10, 10, 10, 0.5);
+  padding-top: 25vh;
+}
+
+.modal-content {
+  background: rgb(175, 175, 175);
+  padding: 20px;
+  margin: auto;
+  min-width: 30vw;
+  width: fit-content;
+  position: relative;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.modal-content button {
+  background: orangered;
+}
+
+.modal-content button:hover {
+  background: black;
+  color: orangered;
+}
+
+.modal-content span {
+  color: rgb(245, 245, 245);
+  font-size: 15px;
+  font-weight: bold;
+  position: absolute;
+  top: -10px;
+  right: -8px;
+  border-radius: 50%;
+  border: 2px solid rgb(245, 245, 245);
+  background: rgb(10, 10, 10);
+  padding: 1px 5px;
+}
+
+.modal-content span:hover {
+  cursor: pointer;
+}
+
 /*@media (max-width: 673px) {
   .btn-container {
     min-height: 20vh;

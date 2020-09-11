@@ -14,13 +14,13 @@
   <body>
     <div class="container">
       <div class="header">
-        <a href="index.html"><button id="forfeit">Forfeit</button></a>
+        <button id="forfeit">Forfeit</button>
         <h1>Quiz Time</h1>
-        <a href="end.html"><button id="submit">Submit</button></a>
+        <button id="submit">Submit</button>
       </div>
       <div class="score-container">Score : <span id="score"> 0 </span></div>
       <div class="question-container">
-        <span>Q.) </span>
+        <span>Q.<span id="qno"></span>.) </span>
         <p id="question"></p>
       </div>
       <div class="options-container"></div>
@@ -28,7 +28,30 @@
         <button id="previous">Previous</button>
         <button id="next">Next</button>
       </div>
+      <div class="modal" id="myModal">
+        <div class="modal-content">
+          <a href="index.html"
+            ><button id="realForfeit">Confirm Forfeit</button></a
+          >
+          <a href="end.html"
+            ><button id="realSubmit">Confirm Submission</button></a
+          >
+          <p id="prevText">
+            "No previous questions. This is the first question. In case you
+            don't want to attempt the quiz click the
+            <strong>forfeit button</strong> on the top-left."
+          </p>
+          <p id="nextText">
+            "No more questions left. Please click the
+            <strong>submit button</strong> in the top-right if you have answered
+            all the question you knew. If not to review or solve unattempted
+            question press the <strong>previous button</strong>."
+          </p>
+          <span id="close">&times;</span>
+        </div>
+      </div>
     </div>
+
     <script type="module" src="js/main.js"></script>
   </body>
 </html>
