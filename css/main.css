@@ -185,11 +185,14 @@ button:active {
 }
 
 .modal-content {
-  background: rgb(175, 175, 175);
+  background: rgb(245, 245, 245);
   padding: 20px;
   margin: auto;
   min-width: 30vw;
   width: fit-content;
+  max-width: 50vw;
+  min-height: 20vh;
+  height: fit-content;
   position: relative;
   border-radius: 5px;
   text-align: center;
@@ -204,7 +207,7 @@ button:active {
   color: orangered;
 }
 
-.modal-content span {
+.modal-content #close {
   color: rgb(245, 245, 245);
   font-size: 15px;
   font-weight: bold;
@@ -217,15 +220,60 @@ button:active {
   padding: 1px 5px;
 }
 
-.modal-content span:hover {
+.modal-content #close:hover {
   cursor: pointer;
 }
 
-/*@media (max-width: 673px) {
-  .btn-container {
-    min-height: 20vh;
-    height: fit-content;
-    justify-content: space-around;
-    flex-direction: column;
-  }
-}*/
+.submit-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 35vh;
+  height: fit-content;
+}
+
+.attempt-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  min-width: 20vw;
+  height: 10vh;
+}
+
+.attempt-container .yes-no {
+  height: 1.5rem;
+  width: 1.5rem;
+  font-size: 1rem;
+  background: lightgrey;
+  padding: 3px 0px;
+  margin: 5px;
+}
+
+.a,
+.ua {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.no {
+  height: 1.5rem;
+  width: 1.5rem;
+  font-size: 1rem;
+  background: lightgrey;
+  color: lightgrey;
+  padding: 3px 0px;
+  margin: 5px;
+}
+
+.yes {
+  height: 1.5rem;
+  width: 1.5rem;
+  font-size: 1rem;
+  background: greenyellow;
+  color: greenyellow;
+  padding: 3px 0px;
+  margin: 5px;
+}

@@ -124,13 +124,6 @@ window.addEventListener("load", () => {
       }
 
       document.getElementById("previous").addEventListener("click", () => {
-        if (qno > 0) {
-          qno--;
-          opc[0].innerText = "";
-          doIt();
-          checkIt();
-        }
-
         if (qno == 0) {
           document.getElementById("realForfeit").style.display = "none";
           document.getElementById("myModal").style.display = "inline-block";
@@ -138,22 +131,29 @@ window.addEventListener("load", () => {
           document.getElementById("prevText").style.display = "inline-block";
           document.getElementById("nextText").style.display = "none";
         }
-      });
 
-      document.getElementById("next").addEventListener("click", () => {
-        if (qno < 9) {
-          qno++;
+        if (qno > 0) {
+          qno--;
           opc[0].innerText = "";
           doIt();
           checkIt();
         }
+      });
 
+      document.getElementById("next").addEventListener("click", () => {
         if (qno == 9) {
           document.getElementById("realForfeit").style.display = "none";
           document.getElementById("myModal").style.display = "inline-block";
           document.getElementById("realSubmit").style.display = "none";
           document.getElementById("prevText").style.display = "none";
           document.getElementById("nextText").style.display = "inline-block";
+        }
+
+        if (qno < 9) {
+          qno++;
+          opc[0].innerText = "";
+          doIt();
+          checkIt();
         }
       });
 
@@ -163,10 +163,16 @@ window.addEventListener("load", () => {
     sessionStorage.setItem("score", document.getElementById("score").innerText);
     document.getElementById("realForfeit").style.display = "none";
     document.getElementById("myModal").style.display = "inline-block";
-    document.getElementById("realSubmit").style.display = "inline-block";
+    document.getElementById("realSubmit").style.display = "flex";
     document.getElementById("prevText").style.display = "none";
     document.getElementById("nextText").style.display = "none";
-    document.getElementById("modal-content").style.pointerEvents = "none";
+    const ar1 = document.getElementsByClassName("yes-no");
+    console.log(ar);
+    for (let i = 0; i < 10; i++) {
+      if (ar[i][2] !== undefined) {
+        ar1[i].style.background = "greenyellow";
+      }
+    }
   });
 
   document.getElementById("forfeit").addEventListener("click", () => {
@@ -175,13 +181,9 @@ window.addEventListener("load", () => {
     document.getElementById("realSubmit").style.display = "none";
     document.getElementById("prevText").style.display = "none";
     document.getElementById("nextText").style.display = "none";
-    document.getElementById("modal-content").style.pointerEvents = "none";
   });
 
   document.getElementById("close").addEventListener("click", () => {
-    document.getElementById("myModal").style.display = "none";
-  });
-  document.getElementById("Mymodal").addEventListener("click", () => {
     document.getElementById("myModal").style.display = "none";
   });
 });
