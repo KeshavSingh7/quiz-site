@@ -1,6 +1,7 @@
 window.addEventListener("load", () => {
   const ques = document.getElementById("question");
   const opc = document.getElementsByClassName("options-container");
+  const ar1 = document.getElementsByClassName("yes-no");
   let qno = 0;
   let ar = new Array(10);
   for (let i = 0; i < 10; i++) {
@@ -87,6 +88,7 @@ window.addEventListener("load", () => {
             }
           });
         }
+        c = 0;
       }
 
       function checkIt() {
@@ -157,6 +159,17 @@ window.addEventListener("load", () => {
         }
       });
 
+      for (let i = 0; i < 10; i++) {
+        if (ar[i][2] === undefined) {
+          ar1[i].addEventListener("click", () => {
+            opc[0].innerText = "";
+            qno = parseInt(ar1[i].innerText) - 1;
+            doIt();
+            document.getElementById("myModal").style.display = "none";
+          });
+        }
+      }
+
       doIt();
     });
   document.getElementById("submit").addEventListener("click", () => {
@@ -166,8 +179,6 @@ window.addEventListener("load", () => {
     document.getElementById("realSubmit").style.display = "flex";
     document.getElementById("prevText").style.display = "none";
     document.getElementById("nextText").style.display = "none";
-    const ar1 = document.getElementsByClassName("yes-no");
-    console.log(ar);
     for (let i = 0; i < 10; i++) {
       if (ar[i][2] !== undefined) {
         ar1[i].style.background = "greenyellow";

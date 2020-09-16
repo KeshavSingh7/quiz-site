@@ -218,6 +218,7 @@ button:active {
   border: 2px solid rgb(245, 245, 245);
   background: rgb(10, 10, 10);
   padding: 1px 5px;
+  height: fit-content;
 }
 
 .modal-content #close:hover {
@@ -240,6 +241,7 @@ button:active {
   flex-wrap: wrap;
   min-width: 20vw;
   height: 10vh;
+  padding-bottom: 10px;
 }
 
 .attempt-container .yes-no {
@@ -276,4 +278,8 @@ button:active {
   color: greenyellow;
   padding: 3px 0px;
   margin: 5px;
+}
+
+.yes-no:hover {
+  cursor: pointer;
 }
