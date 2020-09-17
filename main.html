@@ -12,27 +12,53 @@
     <title>Quiz Site</title>
   </head>
   <body>
+    <!--
+      Header
+    -->
     <div class="container">
       <div class="header">
         <button id="forfeit">Forfeit</button>
         <h1>Quiz Time</h1>
         <button id="submit">Submit</button>
       </div>
+      <!--
+        Question container
+      -->
       <div class="score-container">Score : <span id="score"> 0 </span></div>
       <div class="question-container">
         <span>Q.<span id="qno"></span>.) </span>
         <p id="question"></p>
       </div>
+      <!--
+        Option container
+      -->
       <div class="options-container"></div>
+      <!--
+        Footer
+      -->
       <div class="btn-container">
         <button id="previous">Previous</button>
         <button id="next">Next</button>
       </div>
+
+      <!--
+        Modal
+      -->
       <div class="modal" id="myModal">
         <div class="modal-content">
-          <a href="index.html"
-            ><button id="realForfeit">Confirm Forfeit</button></a
-          >
+          <!--
+          This is displayed when  button is clicked else it is hidden.
+        -->
+          <div id="forfeit-container">
+            <p>Confirm forfeit by clicking the button bellow.</p>
+            <a href="index.html"
+              ><button id="realForfeit">Confirm Forfeit</button></a
+            >
+          </div>
+          <!--
+            this is displayed when submit button is clicked.
+            It contains an overview of all the attempted and unattempted question.
+          -->
           <div class="submit-container" id="realSubmit">
             <div class="attempt-container">
               <div class="yes-no">1</div>
@@ -55,7 +81,9 @@
               <div class="yes">U</div>
               - Attempted
             </div>
-
+            <!--
+              This is displayed when you press previous on the first question. 
+            -->
             <a href="end.html"><button>Confirm Submission</button></a>
           </div>
           <p id="prevText">
@@ -63,12 +91,18 @@
             don't want to attempt the quiz click the
             <strong>forfeit button</strong> on the top-left."
           </p>
+          <!--
+            This is displayed when you press next on the last question.
+          -->
           <p id="nextText">
             "No more questions left. Please click the
             <strong>submit button</strong> in the top-right if you have answered
             all the question you knew. If not to review or solve unattempted
             question press the <strong>previous button</strong>."
           </p>
+          <!--
+            Modal close button.
+          -->
           <span id="close">&times;</span>
         </div>
       </div>

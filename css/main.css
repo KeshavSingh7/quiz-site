@@ -225,6 +225,19 @@ button:active {
   cursor: pointer;
 }
 
+#forfeit-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  height: fit-content;
+}
+
+#forfeit-container p {
+  padding-bottom: 15px;
+}
+
 .submit-container {
   display: flex;
   flex-direction: column;
@@ -240,8 +253,9 @@ button:active {
   align-items: center;
   flex-wrap: wrap;
   min-width: 20vw;
-  height: 10vh;
-  padding-bottom: 10px;
+  width: fit-content;
+  min-height: 12vh;
+  height: fit-content;
 }
 
 .attempt-container .yes-no {
@@ -250,7 +264,11 @@ button:active {
   font-size: 1rem;
   background: lightgrey;
   padding: 3px 0px;
-  margin: 5px;
+  margin: 2px;
+}
+
+.ua {
+  padding-top: 10px;
 }
 
 .a,
@@ -258,6 +276,10 @@ button:active {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.a {
+  padding-bottom: 5px;
 }
 
 .no {

@@ -1,19 +1,26 @@
 window.addEventListener("load", () => {
+  //points to the question container
   const ques = document.getElementById("question");
+  //pointer container
   const opc = document.getElementsByClassName("options-container");
+  //attempted or not attempted
   const ar1 = document.getElementsByClassName("yes-no");
+  //current question number
   let qno = 0;
+  // craeting a 2d array to store question no., correct answer, and option selected by the user.
   let ar = new Array(10);
   for (let i = 0; i < 10; i++) {
     ar[i] = new Array(3);
   }
 
+  // api fetching
   const url = "https://opentdb.com/api.php?amount=10&encode=url3986";
   fetch(url)
     .then((response) => {
       return response.json();
     })
     .then((data) => {
+      //doIt function is used to add the question and the options to their specific container.
       function doIt() {
         document.getElementById("qno").innerText = parseInt(qno) + 1;
         let q = decodeURIComponent(data.results[qno].question);
@@ -23,9 +30,11 @@ window.addEventListener("load", () => {
         ar[qno][1] = a;
         let b = data.results[qno].incorrect_answers;
         let arr = new Array(b.length + 1);
+        //creating a random position for the correct answer and adding it to it
         let rn = Math.floor(Math.random() * (b.length + 1));
         arr[rn] = a;
         let c = 0;
+        //adding the other option to the left off spaces
         for (let i = 0; i < b.length + 1; i++) {
           if (i != rn) {
             b[c] = decodeURIComponent(b[c]);
@@ -33,6 +42,7 @@ window.addEventListener("load", () => {
           }
         }
 
+        //creating the containers that store the option
         for (let i = 0; i < b.length + 1; i++) {
           let x = document.createElement("div");
           x.classList.add("radio-container");
@@ -47,6 +57,7 @@ window.addEventListener("load", () => {
           z.setAttribute("for", `radio${i}`);
           z.innerText = arr[i];
 
+          //adding font awesome to correct and inncorrect option
           let w;
           if (i == rn) {
             w = document.createElement("i");
@@ -62,6 +73,7 @@ window.addEventListener("load", () => {
           opc[0].appendChild(x);
         }
 
+        //adding a pointer event none ensures that the question is attempted only once
         const radioSelect = document.getElementsByClassName("radio-container");
         for (let i = 0; i < radioSelect.length; i++) {
           radioSelect[i].addEventListener("click", () => {
@@ -73,6 +85,7 @@ window.addEventListener("load", () => {
           });
         }
 
+        // checking the answer and displaying the result accordingly
         for (let i = 0; i < b.length + 1; i++) {
           radioSelect[i].addEventListener("click", () => {
             if (
@@ -91,6 +104,7 @@ window.addEventListener("load", () => {
         c = 0;
       }
 
+      //used to check if the previous or next question has been attempted or not
       function checkIt() {
         const radioSelect = document.getElementsByClassName("radio-container");
         if (typeof ar[qno][2] !== "undefined") {
@@ -125,9 +139,10 @@ window.addEventListener("load", () => {
         }
       }
 
+      //function for previous button
       document.getElementById("previous").addEventListener("click", () => {
         if (qno == 0) {
-          document.getElementById("realForfeit").style.display = "none";
+          document.getElementById("forfeit-container").style.display = "none";
           document.getElementById("myModal").style.display = "inline-block";
           document.getElementById("realSubmit").style.display = "none";
           document.getElementById("prevText").style.display = "inline-block";
@@ -142,9 +157,10 @@ window.addEventListener("load", () => {
         }
       });
 
+      //function for next button
       document.getElementById("next").addEventListener("click", () => {
         if (qno == 9) {
-          document.getElementById("realForfeit").style.display = "none";
+          document.getElementById("forfeit-container").style.display = "none";
           document.getElementById("myModal").style.display = "inline-block";
           document.getElementById("realSubmit").style.display = "none";
           document.getElementById("prevText").style.display = "none";
@@ -159,6 +175,7 @@ window.addEventListener("load", () => {
         }
       });
 
+      //navigating to the attempted question using modal indiacators
       for (let i = 0; i < 10; i++) {
         if (ar[i][2] === undefined) {
           ar1[i].addEventListener("click", () => {
@@ -172,9 +189,11 @@ window.addEventListener("load", () => {
 
       doIt();
     });
+
+  //function for submit button
   document.getElementById("submit").addEventListener("click", () => {
     sessionStorage.setItem("score", document.getElementById("score").innerText);
-    document.getElementById("realForfeit").style.display = "none";
+    document.getElementById("forfeit-container").style.display = "none";
     document.getElementById("myModal").style.display = "inline-block";
     document.getElementById("realSubmit").style.display = "flex";
     document.getElementById("prevText").style.display = "none";
@@ -186,14 +205,16 @@ window.addEventListener("load", () => {
     }
   });
 
+  //function for forfeit button
   document.getElementById("forfeit").addEventListener("click", () => {
-    document.getElementById("realForfeit").style.display = "inline-block";
+    document.getElementById("forfeit-container").style.display = "inline-block";
     document.getElementById("myModal").style.display = "inline-block";
     document.getElementById("realSubmit").style.display = "none";
     document.getElementById("prevText").style.display = "none";
     document.getElementById("nextText").style.display = "none";
   });
 
+  //function for modal close button
   document.getElementById("close").addEventListener("click", () => {
     document.getElementById("myModal").style.display = "none";
   });
