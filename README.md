@@ -8,11 +8,11 @@
 
 ## <u>Preview</u>
 
-![img](https://i.postimg.cc/sxQgPjrY/quiz-site-1.png)
+![img](https://i.postimg.cc/j5jHb7HR/quiz-site-1.png)
 <br />
 <br />
 
-![img](https://i.postimg.cc/hPmGftMg/quiz-site-2.png)
+![img](https://i.postimg.cc/T1LnyvNS/quiz-site-2.png)
 
 <br/>
 
